@@ -97,7 +97,7 @@ provinces = dict()  # initialize a dictionary to hold provinces information
 # provinces_info = city_collection()  # Use this function to retrieve links to all the cities
 
 # This is called context management, with open can close the document automatically when the
-with open('DEDA_Class_2017_WebScrapingIntro/output_cities_link.pkl', 'rb') as cities_file:  # write, change 'rb' -> 'wb'
+with open('output_cities_link.pkl', 'rb') as cities_file:  # write, change 'rb' -> 'wb'
     provinces_info = pickle.load(cities_file)
     print(provinces_info)
     # pickle.dump(provinces_info, cities_file)  # write
@@ -122,6 +122,7 @@ for key in provinces_info.keys():
             month_weather = weather_collection(
                 urllib.parse.urljoin(base_link, city_link) + '/month/' + month_date + '.html')
             weather_record[key] = {city_name: {month_date: month_weather}}
+            print(weather_record)
 print('Finished Scraping.')
 
 # Quiz: Try to convert the "json"-like format to pandas DataFrame
